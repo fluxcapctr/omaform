@@ -1,74 +1,74 @@
 {
   "fps": 30,
-  "bpm": 172.8,
+  "bpm": 132.0,
   "scenes": [
     {
       "name": "problem",
-      "bars": 6.0
-    },
-    {
-      "name": "title",
-      "bars": 2.25
-    },
-    {
-      "name": "w9",
       "bars": 4.5
     },
     {
+      "name": "title",
+      "bars": 1.75
+    },
+    {
+      "name": "w9",
+      "bars": 3.5
+    },
+    {
       "name": "list",
-      "bars": 3.75
+      "bars": 2.75
     },
     {
       "name": "vault",
-      "bars": 3.0
+      "bars": 2.25
     },
     {
       "name": "hover",
-      "bars": 2.25
+      "bars": 1.75
     },
     {
       "name": "sigdialog",
-      "bars": 2.25
+      "bars": 1.75
     },
     {
       "name": "sign",
-      "bars": 3.0
+      "bars": 2.25
     },
     {
       "name": "identities",
-      "bars": 2.25
+      "bars": 1.75
     },
     {
       "name": "flat",
-      "bars": 3.75
+      "bars": 2.75
     },
     {
       "name": "i9",
-      "bars": 3.0
+      "bars": 2.25
     },
     {
       "name": "blackout",
-      "bars": 2.25
+      "bars": 1.75
     },
     {
       "name": "pages",
-      "bars": 2.25
+      "bars": 1.75
     },
     {
       "name": "agent",
-      "bars": 3.0
-    },
-    {
-      "name": "ask",
-      "bars": 3.0
-    },
-    {
-      "name": "docx",
       "bars": 2.25
     },
     {
+      "name": "ask",
+      "bars": 2.25
+    },
+    {
+      "name": "docx",
+      "bars": 1.75
+    },
+    {
       "name": "outro",
-      "bars": 3.75
+      "bars": 2.75
     }
   ]
 }

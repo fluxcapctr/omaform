@@ -18,12 +18,12 @@ const fontFace = `
 
 const W = 1920;
 const H = 1080;
-// The music's grid: 172.8 BPM is 41.67 frames a bar, 10.42 a beat.
+// The music's grid, from src/timeline.json: scenes start on its beats.
 const BAR = (timeline.fps * 60 * 4) / timeline.bpm;
 const MUSIC_BEAT = BAR / 4;
-// Choreography moves in steps of one and a half beats (15.625 frames), which
-// lands every other step on a beat without being frantic at drum and bass tempo.
-const BEAT = MUSIC_BEAT * 1.5;
+// Choreography inside a scene moves in fixed steps of 15.625 frames, whatever
+// the tempo, so a change of track never changes how a scene plays.
+const BEAT = 15.625;
 const ease = Easing.bezier(0.45, 0, 0.2, 1);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
