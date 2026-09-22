@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "omaform"
+version = "1.0.0"
+description = "Fill PDF and Word forms from a saved profile, locally"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Eric Stevens" }]
+# python-gobject, python-cairo and poppler-glib come from the system, not from
+# pip: the same libraries render the pages in the GTK app. install.sh makes the
+# environment with --system-site-packages so they are visible to it.
+dependencies = ["pikepdf>=9", "cryptography>=42", "argon2-cffi>=23", "Pillow>=10"]
+
+[project.scripts]
+omaform = "omaform.cli:main"
+omaform-ui = "omaform.ui.app:main"
+
+[project.urls]
+Homepage = "https://github.com/fluxcapctr/omaform"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

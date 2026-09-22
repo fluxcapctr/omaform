@@ -1,0 +1,15 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Omaform
+GenericName=Form Filler
+Comment=Fill PDF forms from your saved details, without retyping them
+Exec=omaform-ui %f
+Icon=omaform
+Terminal=false
+StartupNotify=true
+Categories=Office;X-Omarchy;
+Keywords=pdf;form;fill;w9;w4;i9;tax;signature;autofill;
+# Listed as an option for PDFs and images of forms, deliberately not claimed as
+# the default; install-desktop.sh says how to make it the default if wanted.
+MimeType=application/pdf;application/vnd.openxmlformats-officedocument.wordprocessingml.document;image/png;image/jpeg;

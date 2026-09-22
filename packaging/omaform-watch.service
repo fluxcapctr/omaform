@@ -1,0 +1,12 @@
+[Unit]
+Description=Omaform: offer to fill forms that arrive in Downloads
+After=graphical-session.target
+PartOf=graphical-session.target
+
+[Service]
+ExecStart=%h/.local/bin/omaform watch
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=graphical-session.target

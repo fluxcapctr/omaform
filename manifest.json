@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.fluxcapctr.omaform",
+  "name": "Omaform",
+  "version": "1.0.0",
+  "author": "Eric Stevens",
+  "license": "MIT",
+  "description": "Fill out forms once and for all. PDF forms, flat PDFs, scans and Word documents fill from details you store once, with signatures, an encrypted vault for private data, true black-outs, and your Omarchy agent for confusing forms. Everything stays on your machine.",
+  "kinds": ["bar-widget"],
+  "entryPoints": { "barWidget": "Panel.qml" },
+  "barWidget": {
+    "displayName": "Omaform",
+    "description": "Open a form, see the newest forms in Downloads, and set up Omaform.",
+    "category": "Productivity",
+    "aliases": ["omaform", "form", "pdf", "fill", "sign", "w9", "tax"],
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {},
+    "schema": []
+  }
+}

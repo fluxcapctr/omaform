@@ -1,0 +1,5 @@
+#!/bin/bash
+# Passphrase prompt for when there is no terminal, as used by the desktop entry.
+# Point $OMAFORM_ASKPASS at this. The prompt arrives as $1; the passphrase goes
+# to stdout; a non-zero exit means the user cancelled.
+exec zenity --password --title="Omaform" --timeout=300 2>/dev/null

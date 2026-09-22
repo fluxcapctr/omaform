@@ -1,0 +1,18 @@
+{
+  "name": "omaform-video",
+  "private": true,
+  "scripts": {
+    "studio": "remotion studio",
+    "render": "remotion render Omaform out/omaform.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.380",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.380"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.8",
+    "typescript": "5.8.3"
+  }
+}

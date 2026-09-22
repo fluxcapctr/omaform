@@ -1,0 +1,45 @@
+#!/bin/bash
+# What the launcher entry runs, until the real window arrives in Phase 2.
+#
+# Deliberately not a terminal entry: clicking an app in the launcher and getting
+# a terminal is a broken-feeling experience. This picks a form, fills it, and
+# says what it did, so the entry does something real today.
+
+set -uo pipefail
+
+export OMAFORM_ASKPASS="${OMAFORM_ASKPASS:-$(dirname "$(readlink -f "$0")")/omaform-askpass}"
+OMAFORM_BIN="${OMAFORM_BIN:-omaform}"
+
+file="${1:-}"
+if [[ -z $file ]]; then
+  start="$HOME/Downloads"
+  [[ -d $start ]] || start="$HOME"
+  file=$(zenity --file-selection --title="Pick a form to fill" \
+    --filename="$start/" --file-filter="Forms | *.pdf *.PDF" \
+    --file-filter="All files | *") || exit 0
+fi
+
+[[ -f $file ]] || { zenity --error --text="No such file:\n$file"; exit 1; }
+
+base=${file##*/}
+out="${file%.*}-filled.${file##*.}"
+
+report=$("$OMAFORM_BIN" fill "$file" -o "$out" 2>&1)
+status=$?
+
+if (( status != 0 )); then
+  # The commonest failure is a form wanting a value that is not stored yet, so
+  # show what it said rather than a generic error.
+  zenity --error --width=560 --title="Omaform" \
+    --text="Could not fill <b>$base</b>\n\n<tt>$(sed 's/&/\&amp;/g; s/</\&lt;/g' <<<"$report")</tt>"
+  exit $status
+fi
+
+filled=$(grep -c '✓' <<<"$report")
+notify-send -a Omaform -i omaform "Filled $base" "$filled values written" 2>/dev/null
+
+if zenity --question --width=560 --title="Omaform" --ok-label="Open it" \
+     --cancel-label="Done" \
+     --text="Filled <b>$filled</b> values in <b>$base</b>\n\nSaved as <tt>${out##*/}</tt>"; then
+  xdg-open "$out" >/dev/null 2>&1 &
+fi
