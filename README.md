@@ -8,6 +8,10 @@ fields, scans and Word documents. Your private data stays in an encrypted vault,
 nothing leaves your machine unless you ask your Omarchy agent for help with a
 confusing form.
 
+**[Watch the 73-second tour](https://github.com/fluxcapctr/omaform/releases/download/v1.0.0/omaform.mp4)**
+
+![Omaform filling a W-9](docs/window.png)
+
 ## Install
 
 As an Omarchy plugin, which puts Omaform in the bar:
