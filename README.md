@@ -27,8 +27,9 @@ git clone https://github.com/fluxcapctr/omaform && cd omaform
 ./install.sh
 ```
 
-Either way `install.sh` does the same thing, as you, with no root access: a Python
-environment in `~/.local/share/omaform-venv`, the `omaform` and `omaform-ui` commands in
+Either way `install.sh` does the same thing, as you, with no root access. Python
+packages come only from `requirements.lock`: exact versions, every file checked against
+its recorded hash, prebuilt wheels only. It installs a Python environment in `~/.local/share/omaform-venv`, the `omaform` and `omaform-ui` commands in
 `~/.local/bin`, the launcher entry and icon, and a Downloads watcher unit left off
 until you turn it on. If a system library is missing it stops and prints the pacman
 line that adds it. Run it again after `omarchy plugin update` (the bar icon offers
@@ -404,16 +405,10 @@ helper that can ask, the same convention ssh and sudo use;
 
 ## Developing
 
-```console
-git clone https://github.com/fluxcapctr/omaform && cd omaform
-python -m venv --system-site-packages .venv   # for the system GTK and poppler bindings
-./.venv/bin/pip install -e . pytest
-./.venv/bin/python -m pytest
-OMAFORM_VENV=$PWD/.venv ./packaging/install-desktop.sh   # launcher runs this checkout
-```
-
-`AGENTS.md` is the map for an AI agent working on the code, or installing Omaform for
-someone. The design and its history are in [docs/PLAN.md](docs/PLAN.md).
+[docs/DEVELOPING.md](docs/DEVELOPING.md) covers setting up, the layout, how a model
+is used, and the rules the code keeps. The design and its history are in
+[docs/PLAN.md](docs/PLAN.md). `OMAFORM_VENV=$PWD/.venv ./packaging/install-desktop.sh`
+points the launcher at a development checkout.
 
 ## Tests
 

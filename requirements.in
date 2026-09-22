@@ -1,0 +1,11 @@
+# Exactly what the test suite runs against. install.sh installs from
+# requirements.lock (generated from this file with hashes) and nothing else:
+#   uv pip compile requirements.in --generate-hashes --universal \
+#     --python-version 3.11 -o requirements.lock
+pikepdf==10.13.0.post1
+cryptography==50.0.1
+argon2-cffi==25.1.0
+Pillow==12.3.0
+# Needed to build Omaform itself, installed from the lock so the build does
+# not fetch its own tools from an index.
+setuptools==84.0.0

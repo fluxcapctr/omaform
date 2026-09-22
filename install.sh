@@ -39,13 +39,19 @@ if [[ ! -x $venv/bin/python ]] || ! "$venv/bin/python" -c "import gi" 2>/dev/nul
   rm -rf "$venv"
   python3 -m venv --system-site-packages "$venv"
 fi
-"$venv/bin/python" -m pip install --quiet --upgrade pip
+# Dependencies come only from requirements.lock: exact versions, each file
+# checked against its recorded hash, prebuilt wheels only, and nothing
+# resolved beyond the list. The pip that ships with Python is used as is.
+"$venv/bin/python" -m pip install --quiet --disable-pip-version-check \
+  --require-hashes --only-binary=:all: --no-deps -r requirements.lock
+# Omaform itself is built from a copy of this folder, so the build leaves
+# nothing behind in here, and with no index at all: the build tools are the
+# locked setuptools installed above.
 build=$(mktemp -d)
 trap 'rm -rf "$build"' EXIT
-# Built from a copy, so the build leaves nothing behind in this folder.
-tar --exclude=.git --exclude=video --exclude=tests -cf - . | tar -xf - -C "$build"
-"$venv/bin/python" -m pip install --quiet --force-reinstall --no-deps "$build"
-"$venv/bin/python" -m pip install --quiet "$build"
+tar --exclude=.git --exclude=.venv --exclude=video --exclude=tests -cf - . | tar -xf - -C "$build"
+"$venv/bin/python" -m pip install --quiet --disable-pip-version-check \
+  --no-index --no-deps --no-build-isolation --force-reinstall "$build"
 
 OMAFORM_VENV="$venv" ./packaging/install-desktop.sh
 
