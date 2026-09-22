@@ -176,7 +176,7 @@ def thick(n, length):
 for bar in range(BARS):
     root, notes = chord(bar)
     sec = section(bar)
-    level = {"intro": 0.24, "groove": 0.22, "break": 0.26, "outro": 0.25}[sec]
+    level = {"intro": 0.216, "groove": 0.198, "break": 0.234, "outro": 0.225}[sec]
     length = BAR + 0.9
     t = t_of(length)
     swell = np.minimum(1, t / (0.25 if sec == "groove" else 0.6))
