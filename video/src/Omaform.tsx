@@ -18,14 +18,19 @@ const fontFace = `
 
 const W = 1920;
 const H = 1080;
-// The music's grid: 115.2 BPM is 62.5 frames a bar, 15.625 a beat.
+// The music's grid: 172.8 BPM is 41.67 frames a bar, 10.42 a beat.
 const BAR = (timeline.fps * 60 * 4) / timeline.bpm;
-const BEAT = BAR / 4;
+const MUSIC_BEAT = BAR / 4;
+// Choreography moves in steps of one and a half beats (15.625 frames), which
+// lands every other step on a beat without being frantic at drum and bass tempo.
+const BEAT = MUSIC_BEAT * 1.5;
 const ease = Easing.bezier(0.45, 0, 0.2, 1);
 const clamp = {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'} as const;
 
-/** 1 on each beat, falling away before the next. */
-const pulse = (frame: number) => Math.exp(-((frame % BEAT) / BEAT) * 5);
+/** 1 on each snare (beats two and four), falling away before the next. */
+const SNARE = MUSIC_BEAT * 2;
+const pulse = (frame: number) =>
+  Math.exp(-(((frame - MUSIC_BEAT + SNARE) % SNARE) / SNARE) * 5);
 
 // -- helpers -----------------------------------------------------------------
 

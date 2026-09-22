@@ -8,9 +8,81 @@ fields, scans and Word documents. Your private data stays in an encrypted vault,
 nothing leaves your machine unless you ask your Omarchy agent for help with a
 confusing form.
 
-**[Watch the 73-second tour](https://github.com/fluxcapctr/omaform/releases/download/v1.0.0/omaform.mp4)**
+![Stop filling out the same forms over and over again](docs/tour/intro.webp)
 
-![Omaform filling a W-9](docs/window.png)
+## How it works
+
+### Open a form. It's already filled.
+
+![A W-9 opening with the name, address and tax classification already in place](docs/tour/fill.webp)
+
+Name, address, tax classification: read off the page the way a person reads it, so it
+works on forms Omaform has never seen.
+
+### Only what it's sure of
+
+![The list of filled values, then the Social Security number split across its boxes](docs/tour/sure.webp)
+
+Every value and the words it answers, beside the page. Anything uncertain is left
+empty on purpose, and a split number like an SSN is spread across its boxes.
+
+### Your private data, locked in an encrypted vault
+
+![The vault unlock dialog and the locked rows it opens](docs/tour/vault.webp)
+
+Your SSN, EIN, date of birth and signature live in a vault only your passphrase opens,
+and only when a form needs them.
+
+### Sign once, then drag it anywhere
+
+![Drawing a signature, then the signed and dated line](docs/tour/signature.webp)
+
+Draw your signature once. Omaform signs and dates the line; drag it into place, or
+right-click anywhere to sign, date, tick or type on any PDF.
+
+### You, your business, your family
+
+![The Identities tab](docs/tour/identities.webp)
+
+Each identity keeps its own details: a business files with its EIN, a person with
+their SSN.
+
+### No form fields? Still filled.
+
+![A flat rental application filled and signed](docs/tour/flat.webp)
+
+Most emailed forms are just lines on a page. Omaform finds the lines and their labels
+and fills them too, scans included.
+
+### Knows whose section is whose
+
+![An I-9 with the employee's section filled and the employer's left alone](docs/tour/sections.webp)
+
+It fills your part of an I-9 and leaves your employer's alone.
+
+### Black it out, for real
+
+![A black-out over the SSN boxes](docs/tour/blackout.webp)
+
+The page is rebuilt without what's under the box. Removed, not covered.
+
+### Merge, reorder, rotate your documents
+
+![The Pages tab with pages from two files](docs/tour/pages.webp)
+
+### Confusing form? Ask your Omarchy agent
+
+![Ask your Omarchy agent, then the model reading the form](docs/tour/agent.webp)
+
+For "complete this part only if..." forms, Omaform hands the questions to the agent you
+use with Omarchy, or a local model. Only when you ask, and it sees the questions,
+never your answers.
+
+### Word documents too
+
+![A Word form filled in the field list](docs/tour/word.webp)
+
+**[Watch the whole tour, with sound](https://github.com/fluxcapctr/omaform/releases/latest/download/omaform.mp4)**
 
 ## Install
 
@@ -71,7 +143,7 @@ omarchy plugin remove io.github.fluxcapctr.omaform                    # if you a
 environment, and keeps your identities, vault and remembered forms in
 `~/.local/share/omaform`. `./uninstall.sh --purge` deletes those too, after asking.
 
-## What it looks like
+## In detail
 
 ![The fill view](docs/window.png)
 
